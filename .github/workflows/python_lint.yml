@@ -9,7 +9,7 @@ on:
 # put actual action inside jod and steps
 jobs:
   linter:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu:latest
 
     steps:
       - name: checkout code
