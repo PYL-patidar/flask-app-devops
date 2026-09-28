@@ -10,19 +10,17 @@ jobs:
       DOCKERHUB_USER: ${{vars.DOCKERHUB_USER}}
 
     runs-on: self-hosted 
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
 
-  steps:
-  
-    - name: Code checkout
-      uses: actions/checkout@v4
-
-    - name: Install dependencies 
-      run: |
-        sudo apt-get update && sudo apt-get install docker.io docker-compose-v2
-        newgrp docker
-        docker ps
-        docker --version
-        docker-compose --verison
-
-    - name: Deploy on self hosted 
-      run: docker compose down && docker compose up -d --build 
+      - name: Install dependencies 
+        run: |
+          sudo apt-get update && sudo apt-get install docker.io docker-compose-v2
+          newgrp docker
+          docker ps
+          docker --version
+          docker-compose --verison
+          
+      - name: Deploy on self hosted 
+        run: docker compose down && docker compose up -d --build 
