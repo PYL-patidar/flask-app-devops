@@ -19,8 +19,6 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install docker.io docker-compose-v2 -y
           sudo usermod -aG docker $USER
-          sudo reboot
-          
 
       - name: Deploy on self hosted 
         run: docker compose down && docker compose up -d --build 
