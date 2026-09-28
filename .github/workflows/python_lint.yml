@@ -21,5 +21,5 @@ jobs:
           pyhton_version: "3.14"
 
       - name: flake8 linting
-        run: flake8 app.py
+        run: flake8 run.py
 
