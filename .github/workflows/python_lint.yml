@@ -20,6 +20,9 @@ jobs:
         with:
           pyhton_version: "3.14"
 
+      - name: install requirements
+        run: pip install -r requirements.txt
+
       - name: flake8 linting
         run: flake8 run.py
 
