@@ -8,11 +8,12 @@ jobs:
   deploy:
     env:
       DOCKERHUB_USER: ${{vars.DOCKERHUB_USER}}
-       
+
     runs-on: self-hosted 
 
   steps:
-    - name: code checkout
+  
+    - name: Code checkout
       uses: actions/checkout@v4
 
     - name: Install dependencies 
