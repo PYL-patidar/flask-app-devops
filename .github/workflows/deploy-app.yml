@@ -21,4 +21,5 @@ jobs:
           sudo usermod -aG docker $USER
 
       - name: Deploy on self hosted 
-        run: docker compose down && docker compose up -d --build 
+        #run: docker compose down && docker compose up -d --build 
+        run: docker compose down && docker compose up -d --force-recreate --build
