@@ -1,0 +1,25 @@
+# name of workflow
+name: pyhton lint 
+
+# set trigger point
+on:
+  push:
+    branches: [main]
+
+# put actual action inside jod and steps
+jobs:
+  linter:
+    runs_on: ubuntu_latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup the pyhton 
+        uses: actions/setup_python@v5
+        with:
+          pyhton_version: "3.14"
+
+      - name: flake8 linting
+        run: flake8 app.py
+
