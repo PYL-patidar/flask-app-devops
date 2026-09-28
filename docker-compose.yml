@@ -1,0 +1,6 @@
+services:
+  web-app:
+    image: ${DOCKERHUB_USER}/flaskapp:latest
+    ports:
+      - "80:80"
+
