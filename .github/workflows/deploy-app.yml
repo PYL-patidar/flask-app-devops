@@ -20,8 +20,8 @@ jobs:
           sudo apt-get install docker.io docker-compose-v2 -y
           sudo usermod -aG docker $USER
 
-      - name: Deploy on self hosted 
-        #run: docker compose down && docker compose up -d --build 
+      - name: Deploy with docker compose 
         run: |
           docker compose down
-          docker compose up -d --build --force-recreate
+          docker compose up -d --build --force-recreate --no-cache
+
