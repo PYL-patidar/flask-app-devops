@@ -1,6 +1,7 @@
 services:
   web-app:
     image: ${DOCKERHUB_USER}/flaskapp:latest
+    pull_policy: always
     ports:
       - "80:80"
 
