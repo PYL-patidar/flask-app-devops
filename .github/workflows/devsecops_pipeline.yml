@@ -12,11 +12,11 @@ jobs:
 
   # secrets scan
   secrets-scan:
-    - uses: ./.github/workflows/secrets_scan.yml
+    uses: ./.github/workflows/secrets_scan.yml
 
   # dependecy scan
   dependency-scan:
-    - uses: ./.github/workflows/dependecy_scan.yml
+    uses: ./.github/workflows/dependecy_scan.yml
 
   # Now code security done
 
