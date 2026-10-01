@@ -1,0 +1,31 @@
+# name of workflow
+# code qulity scan with flake8 
+name: pyhton lint 
+
+# set trigger point on workflow call
+on:
+  workflow_call:
+
+# put actual action inside jod and steps
+jobs:
+  code-lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.12", "3.13", "3.14"]
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup the pyhton 
+        uses: actions/setup-python@v4
+        with:
+          pyhton_version: ${{ matrix.pyhton_version }}
+
+      - name: install requirements
+        run: pip install -r requirements.txt
+
+      - name: flake8 linting
+        run: flake8 run.py
+
