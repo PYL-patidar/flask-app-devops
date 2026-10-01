@@ -20,7 +20,7 @@ jobs:
 
 # tool for scan python dependencies
       - name: Install pip-audit
-        uses: pip install pip-audit
+        run: pip install pip-audit
 
       - name: Run pip audit 
         run: pip-audit -r requirements.txt
