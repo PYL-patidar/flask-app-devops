@@ -22,16 +22,20 @@ jobs:
 
   # stage 2 (BUILD + security)
   dockerfile-scan:
+    needs: [code-scan, secrets-scan, dependency-scan]
     uses: ./.github/workflows/dockerfile_lint.yml
 
   # Build image and push to docker hun registry
   buils-and-push:
+    needs: [dockerfile-scan]
     uses: ./.github/workflows/build_and_push.yml
 
   # stage 3 (TEST + security)
   image-scan:
+    needs: [buils-and-push] 
     uses: ./.github/workflows/image_scan.yml
 
   # stage 4 (DEPLOY + security)
   deploy:
+    needs: [image-scan]
     uses: ./.github/workflows/deploy-app.yml
