@@ -1,0 +1,26 @@
+# dependecy scan or python code with python self package -> pip-audit
+# scan vulnerabilities
+name: Dependencies Scan
+
+on:
+  workflow_call
+
+jobs:
+  dependencies_scan:
+    runs-on: ubuntu-latest
+
+    stpes:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: setup the pyhton version 3.14 
+        uses: actions/setup-python@v4
+        with:
+          pyhton_version: 3.14
+
+# tool for scan python dependencies
+      - name: Install pip-audit
+        uses: pip install pip-audit
+
+      - name: Scan Dependencies
+        run: pip-audit -r requirements.txt
