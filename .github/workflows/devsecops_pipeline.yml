@@ -1,0 +1,37 @@
+name: End to End DevSecOps Pipeline
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  # stage 1 (CODE + Security)
+  # code scan workflow run
+  code-scan:
+    uses: ./.github/workflows/code_quality.yml
+
+  # secrets scan
+  secrets-scan:
+    - uses: ./.github/workflows/secrets_scan.yml
+
+  # dependecy scan
+  dependency-scan:
+    - uses: ./.github/workflows/dependecy_scan.yml
+
+  # Now code security done
+
+  # stage 2 (BUILD + security)
+  dockerfile-scan:
+    uses: ./.github/workflows/dockerfile_scan.yml
+
+  # Build image and push to docker hun registry
+  buils-and-push:
+    uses: ./.github/workflows/build_and_push.yml
+
+  # stage 3 (TEST + security)
+  image-scan:
+    uses: ./.github/workflows/image_scan.yml
+
+  # stage 4 (DEPLOY + security)
+  deploy:
+    uses: ./.github/workflows/deploy-app.yml
