@@ -22,7 +22,7 @@ jobs:
 
   # stage 2 (BUILD + security)
   dockerfile-scan:
-    uses: ./.github/workflows/dockerfile_scan.yml
+    uses: ./.github/workflows/dockerfile_lint.yml
 
   # Build image and push to docker hun registry
   buils-and-push:
