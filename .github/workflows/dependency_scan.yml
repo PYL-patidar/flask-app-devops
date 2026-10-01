@@ -9,7 +9,7 @@ jobs:
   dependencies_scan:
     runs-on: ubuntu-latest
 
-    stpes:
+    steps:
       - name: Code checkout
         uses: actions/checkout@v4
 
