@@ -16,7 +16,7 @@ jobs:
 
   # dependecy scan
   dependency-scan:
-    uses: ./.github/workflows/dependecy_scan.yml
+    uses: ./.github/workflows/dependency_scan.yml
 
   # Now code security done
 
