@@ -5,6 +5,8 @@ name: Code Quality
 on:
   workflow_call:
   workflow_dispatch:
+  push:
+    branches: [master]
 
 jobs:
   pyhton-linter:
