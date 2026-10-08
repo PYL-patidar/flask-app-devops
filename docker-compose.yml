@@ -1,0 +1,8 @@
+services:
+  flaskapp:
+    build:
+      context: .
+    container_name: flaskapp_cont
+    ports:
+      - "80:80"
+
