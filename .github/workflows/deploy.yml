@@ -21,9 +21,22 @@ jobs:
             sudo apt-get install docker.io docker-compose-v2 -y
             sudo usermod -aG docker $USER
             mkdir -p devops
-            docker compose down -v && docker compose up --build -d
 
-        
-        
-        #newgrp docker      
-        #docker compose down -v && docker compose up --build -d
+      - name: Copy docker-compose file to remote server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "docker-compose.yml"
+          target: /devops
+
+      - name: docker compose deploy via ssh on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd devops
+            docker compose down -v && docker compose up --build -d --force-recreate
