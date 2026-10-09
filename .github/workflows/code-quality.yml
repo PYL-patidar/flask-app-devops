@@ -1,5 +1,7 @@
 # This is for Code quality check like syntex 
 # with python specific --> flake8 
+# code security scan with SAST(static application security Test) --> bandit 
+
 name: Code Quality
 
 on:
@@ -19,3 +21,6 @@ jobs:
 
       - name: Run linter
         run: flake8
+      
+      - name: code security scan 
+        run: bandit -r .
