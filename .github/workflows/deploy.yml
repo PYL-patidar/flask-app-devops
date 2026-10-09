@@ -16,6 +16,11 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-      
-      - name: deploy app
-        run: mkdir -p devops
+          script: |
+            sudo apt-get update
+            sudo apt-get install docker.io docker-compose-v2 -y
+            sudo usermod -aG docker $USER
+            mkdir devops  
+        
+        #newgrp docker      
+        #docker compose down -v && docker compose up --build -d
