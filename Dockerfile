@@ -8,7 +8,7 @@ WORKDIR /app
 COPY requirements.txt /app
 
 # install depensencies
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # copy entire code to containser
 COPY . .
