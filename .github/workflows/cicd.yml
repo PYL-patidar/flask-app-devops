@@ -3,7 +3,7 @@ name: DevSecOps CICD
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   code-quality:
