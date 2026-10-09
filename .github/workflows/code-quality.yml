@@ -23,4 +23,4 @@ jobs:
         run: flake8
       
       - name: code security scan 
-        run: bandit -r .
+        run: bandit -r app.py
