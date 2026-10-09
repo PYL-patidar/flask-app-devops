@@ -5,4 +5,5 @@ services:
     container_name: flaskapp_cont
     ports:
       - "80:80"
+    pull_policy: always
 
