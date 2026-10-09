@@ -1,7 +1,6 @@
 services:
   flaskapp:
-    build:
-      context: .
+    image: ${{ vars.DOCKERHUB_USERNAME }}/flask-app:latest
     container_name: flaskapp_cont
     ports:
       - "80:80"
