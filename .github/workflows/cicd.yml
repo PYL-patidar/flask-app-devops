@@ -1,0 +1,39 @@
+name: DevSecOps CICD
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+jobs:
+  code-quality:
+    uses: ./.github/workflows/code-quality.yml
+    
+  secrets-scan:
+    uses: ./.github/workflows/secrets-scan.yml
+    secrets: inherit  
+  
+  dependency-scan:
+    uses: ./.github/workflows/dependency-scan.yml
+
+  docker-lint:
+    uses: ./.github/workflows/dockerfile-scan.yml
+  
+  build-and-push:
+    need: [code-quality, secrets-scan, dependency-scan, docker-lint]
+    uses: ./.github/workflows/build-and-push.yml
+    secrets: inherit
+  
+  image-scan:
+    needs: [build-and-push]
+    uses: ./.github/workflows/image-lint.yml
+    secrets: inherit
+
+  deploy:
+    needs: [image-scan]
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
+
+
+
+  
