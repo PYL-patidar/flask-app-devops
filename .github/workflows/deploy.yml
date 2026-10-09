@@ -39,5 +39,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd devops
-            export ${{vars.}}
             docker compose down -v && docker compose up --build -d --force-recreate
