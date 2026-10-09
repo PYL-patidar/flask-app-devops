@@ -20,7 +20,10 @@ jobs:
             sudo apt-get update
             sudo apt-get install docker.io docker-compose-v2 -y
             sudo usermod -aG docker $USER
-            mkdir devops  
+            mkdir devops
+            docker compose down -v && docker compose up --build -d
+
+        
         
         #newgrp docker      
         #docker compose down -v && docker compose up --build -d
