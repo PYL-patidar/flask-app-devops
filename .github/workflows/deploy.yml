@@ -40,4 +40,5 @@ jobs:
           script: |
             export DOCKERHUB_USERNAME=${{vars.DOCKERHUB_USERNAME}}
             cd devops
+            docker compose config
             docker compose down -v && docker compose up --build -d --force-recreate
