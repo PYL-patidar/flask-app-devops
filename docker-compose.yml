@@ -1,6 +1,6 @@
 services:
   flaskapp:
-    image: ${{ vars.DOCKERHUB_USERNAME }}/flask-app:latest
+    image: ${DOCKERHUB_USERNAME}/flask-app:latest
     pull_policy: always
     container_name: flaskapp_cont
     ports:
