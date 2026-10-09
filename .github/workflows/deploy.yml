@@ -6,8 +6,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      DOCKERHUB_USERNAME= ${{vars.DOCKERHUB_USERNAME}}
     steps:
       - name: code checkout
         uses: actions/checkout@v4
@@ -39,7 +37,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: DOCKERHUB_USERNAME
           script: |
+            export DOCKERHUB_USERNAME=${{vars.DOCKERHUB_USERNAME}}
             cd devops
             docker compose down -v && docker compose up --build -d --force-recreate
